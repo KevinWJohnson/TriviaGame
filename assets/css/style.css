@@ -1,1 +1,35 @@
+body {
+    background: blue;
+}
 
+header {
+    text-align: center
+}
+
+h1 {
+    color: red;
+    font-size: 110px;
+    text-align: center
+}
+
+#game-container {
+    background: yellow;
+    margin-top: 100px;
+    margin-right: 100px;
+    margin-bottom: 100px;
+    margin-left: 100px;
+
+
+}
+
+#start {
+    font-size: 72px;
+    padding-top: 20px;
+    padding-right: 40px;
+    padding-bottom: 20px;
+    padding-left: 40px;
+    margin-top: 60px;
+    margin-bottom: 150px;
+    border: solid;
+    border-width: 3px;
+}
