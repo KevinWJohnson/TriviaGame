@@ -85,6 +85,14 @@ $(document).ready(function () {
     // Creating the questions by calling the getQuestions function
     getQuestions();
 
+
+    // Done Button - to stop the game and bring up the results
+    // Create Button
+
+    $("#game").append(
+        "<button id='endGame'>Done</button>"
+    )
+
     // $(document).on("click",)
     // $("#start").on("click", stopwatch.start);
 
