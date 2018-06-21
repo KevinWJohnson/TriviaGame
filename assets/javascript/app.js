@@ -2,6 +2,10 @@
 
 $(document).ready(function () {
 
+    // Global Variables
+
+    var timer = 5;
+
     var questions = [
         {
             "question": "What was one of the shows famous catchphrases?",
@@ -53,6 +57,29 @@ $(document).ready(function () {
     $("#start-game").html(
         "<button id='start'>Start</button>"
     )
+
+    // Hiding the start-game div
+    $("#start-game").hide();
+
+    // Creating game div
+
+    function getQuestions() {
+        for (var i = 0; i < questions.length; i++) {
+            $("#game").append(
+                "<p>" + questions[i].question + "<p>" +
+                "<form>" +
+                "<input type='radio' name='questionResponses' value=" + questions[i].correctAns[0] + ">" + questions[i].choices[0] +
+                "<input type='radio' name='questionResponses' value=" + questions[i].correctAns[1] + ">" + questions[i].choices[1] +
+                "<input type='radio' name='questionResponses' value=" + questions[i].correctAns[2] + ">" + questions[i].choices[2] +
+                "<input type='radio' name='questionResponses' value=" + questions[i].correctAns[3] + ">" + questions[i].choices[3] +
+                "</form>"
+            )
+        }
+    }
+    //$("#game").hide();
+
+    // Creating the questions by calling the getQuestions function
+    getQuestions();
 
     // $(document).on("click",)
     // $("#start").on("click", stopwatch.start);

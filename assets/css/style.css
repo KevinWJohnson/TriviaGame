@@ -2,14 +2,15 @@ body {
     background: blue;
 }
 
-header {
+#centerText {
     text-align: center
 }
 
 h1 {
     color: red;
     font-size: 110px;
-    text-align: center
+    text-align: center;
+    padding-top: 30px;
 }
 
 #game-container {
@@ -32,4 +33,25 @@ h1 {
     margin-bottom: 150px;
     border: solid;
     border-width: 3px;
+}
+
+p {
+    font-size: 30px;
+    font-weight: bold;
+    margin-top: 20px;
+    margin-right: 50px;
+    margin-bottom: 0px;
+    margin-left: 50px;
+}
+
+input[type="radio"]{
+    margin: 0 20px 0 20px;  
+}
+
+form {
+    font-weight: bold;
+}
+
+#bottomSpace {
+    padding: 30px;
 }
