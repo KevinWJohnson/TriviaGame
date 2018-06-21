@@ -77,7 +77,7 @@ $(document).ready(function () {
 
 
         // Setting the time interval that the function below is called
-       var timerId = setInterval(function () {
+        var timerId = setInterval(function () {
             timer--;
 
             // Creating game div
@@ -105,6 +105,15 @@ $(document).ready(function () {
                 $("#results").show();
             }
 
+            $(document).on("click", "#endGame", function () {
+                 // clear the interval
+                 clearInterval(timerId)
+                 // Hiding the game div
+                 $("#game").hide();
+                 // Hiding the results div
+                 $("#results").show();
+
+            });
 
         }, 1000);
 
@@ -113,43 +122,12 @@ $(document).ready(function () {
 
 
 
-
-
-
-    // Hiding the game div
-    $("#game").hide();
-
     // Creating results div
     $("#results").html("<h2>All Done!</h2>" +
         "<p>Correct Answers: " + correctAns + "</p>" +
         "<p>Incorrect Answers: " + wrongAns + "</p>" +
         "<p>Unanswered: " + notAns + "</p>"
     )
-
-    // Hiding the results div
-    $("#results").hide();
-
-
-    // $(document).on("click",)
-    // $("#start").on("click", stopwatch.start);
-
-    // <form action="">
-    //   <input type="radio" name="gender" value="male"> Male
-    //   <input type="radio" name="gender" value="female"> Female
-    //   <input type="radio" name="gender" value="other"> Other
-    // </form>
-
-    // function check() {
-    //     document.getElementById("red").checked = true;
-    // }
-
-    // function uncheck() {
-    //     document.getElementById("red").checked = false;
-    // }
-
-
-
-
 
 
 
@@ -168,7 +146,10 @@ $(document).ready(function () {
     }
 
 
+function getResults(){
 
+    
+}
 
 
 
