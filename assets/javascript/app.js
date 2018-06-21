@@ -4,11 +4,11 @@ $(document).ready(function () {
 
     // Global Variables
 
-    var timer = 5;
-    var timeRemain = 0;
+    var timer = 10;
     var correctAns = 0;
     var wrongAns = 0;
     var notAns = 0;
+
 
 
     var questions = [
@@ -56,6 +56,9 @@ $(document).ready(function () {
     ];
 
 
+    // Showing the start-game div
+    $("#start-game").show();
+
     // Start Button - button to start the timer and the trivia game
     // Create Button
 
@@ -63,41 +66,54 @@ $(document).ready(function () {
         "<button id='start'>Start</button>"
     )
 
-    // Hiding the start-game div
-    $("#start-game").hide();
+    // Starting the trivia game when the start button is clicked
+
+    $(document).on("click", "#start", function () {
+
+        // Hiding the start-game div
+        $("#start-game").hide();
+        // Showing the game div
+        $("#game").show();
 
 
+        // Setting the time interval that the function below is called
+       var timerId = setInterval(function () {
+            timer--;
 
-    // Creating game div
+            // Creating game div
 
-    function getQuestions() {
-        for (var i = 0; i < questions.length; i++) {
+            // Adding Time Remaining to #game
+            $("#game").html("<h2>Time Remaining: " + timer + " Seconds</h2>");
+
+            // Creating the questions by calling the getQuestions function
+            getQuestions();
+
+
+            // Done Button - to stop the game and bring up the results
+            // Create Button
+
             $("#game").append(
-                "<p>" + questions[i].question + "<p>" +
-                "<form>" +
-                "<input type='radio' name='questionResponses' value=" + questions[i].correctAns[0] + ">" + questions[i].choices[0] +
-                "<input type='radio' name='questionResponses' value=" + questions[i].correctAns[1] + ">" + questions[i].choices[1] +
-                "<input type='radio' name='questionResponses' value=" + questions[i].correctAns[2] + ">" + questions[i].choices[2] +
-                "<input type='radio' name='questionResponses' value=" + questions[i].correctAns[3] + ">" + questions[i].choices[3] +
-                "</form>"
-            )
-        }
-    }
+                "<button id='endGame'>Done</button>"
+            );
+
+            if (timer === 0) {
+                // clear the interval
+                clearInterval(timerId)
+                // Hiding the game div
+                $("#game").hide();
+                // Hiding the results div
+                $("#results").show();
+            }
 
 
-    // Adding Time Remaining to #game
-    $("#game").html("<h2>Time Remaining: " + timeRemain + " Seconds</h2>");
-
-    // Creating the questions by calling the getQuestions function
-    getQuestions();
+        }, 1000);
 
 
-    // Done Button - to stop the game and bring up the results
-    // Create Button
+    });
 
-    $("#game").append(
-        "<button id='endGame'>Done</button>"
-    );
+
+
+
 
 
     // Hiding the game div
@@ -110,7 +126,8 @@ $(document).ready(function () {
         "<p>Unanswered: " + notAns + "</p>"
     )
 
-
+    // Hiding the results div
+    $("#results").hide();
 
 
     // $(document).on("click",)
@@ -136,7 +153,19 @@ $(document).ready(function () {
 
 
 
-
+    function getQuestions() {
+        for (var i = 0; i < questions.length; i++) {
+            $("#game").append(
+                "<p>" + questions[i].question + "<p>" +
+                "<form>" +
+                "<input type='radio' name='questionResponses' value=" + questions[i].correctAns[0] + ">" + questions[i].choices[0] +
+                "<input type='radio' name='questionResponses' value=" + questions[i].correctAns[1] + ">" + questions[i].choices[1] +
+                "<input type='radio' name='questionResponses' value=" + questions[i].correctAns[2] + ">" + questions[i].choices[2] +
+                "<input type='radio' name='questionResponses' value=" + questions[i].correctAns[3] + ">" + questions[i].choices[3] +
+                "</form>"
+            )
+        }
+    }
 
 
 
