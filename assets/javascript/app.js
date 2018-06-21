@@ -5,6 +5,7 @@ $(document).ready(function () {
     // Global Variables
 
     var timer = 5;
+    var timeRemain = 0;
 
     var questions = [
         {
@@ -77,6 +78,9 @@ $(document).ready(function () {
         }
     }
     //$("#game").hide();
+
+    // Adding Time Remaining to #game
+    $("#game").html("<h2>Time Remaining: "+ timeRemain+" Seconds</h2>");
 
     // Creating the questions by calling the getQuestions function
     getQuestions();
