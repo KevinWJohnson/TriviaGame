@@ -6,6 +6,10 @@ $(document).ready(function () {
 
     var timer = 5;
     var timeRemain = 0;
+    var correctAns = 0;
+    var wrongAns = 0;
+    var notAns = 0;
+
 
     var questions = [
         {
@@ -62,6 +66,8 @@ $(document).ready(function () {
     // Hiding the start-game div
     $("#start-game").hide();
 
+
+
     // Creating game div
 
     function getQuestions() {
@@ -77,10 +83,10 @@ $(document).ready(function () {
             )
         }
     }
-    //$("#game").hide();
+
 
     // Adding Time Remaining to #game
-    $("#game").html("<h2>Time Remaining: "+ timeRemain+" Seconds</h2>");
+    $("#game").html("<h2>Time Remaining: " + timeRemain + " Seconds</h2>");
 
     // Creating the questions by calling the getQuestions function
     getQuestions();
@@ -91,7 +97,21 @@ $(document).ready(function () {
 
     $("#game").append(
         "<button id='endGame'>Done</button>"
+    );
+
+
+    // Hiding the game div
+    $("#game").hide();
+
+    // Creating results div
+    $("#results").html("<h2>All Done!</h2>" +
+        "<p>Correct Answers: " + correctAns + "</p>" +
+        "<p>Incorrect Answers: " + wrongAns + "</p>" +
+        "<p>Unanswered: " + notAns + "</p>"
     )
+
+
+
 
     // $(document).on("click",)
     // $("#start").on("click", stopwatch.start);
