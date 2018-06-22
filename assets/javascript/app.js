@@ -4,7 +4,7 @@ $(document).ready(function () {
 
     // Global Variables
 
-    var timer = 120;
+    var timer = 60;
     var correctAns = 0;
     var wrongAns = 0;
     var notAns = 0;
@@ -107,14 +107,7 @@ $(document).ready(function () {
 
 
             if (timer === 0) {
-                // clear the interval
-                clearInterval(timerId)
-                // Hiding the game div
-                $("#game").hide();
-                // Hiding the timer
-                $("#timerHeader").hide();
-                // Hiding the results div
-                $("#results").show();
+                handleEndGame();
             }
 
 
@@ -140,12 +133,74 @@ $(document).ready(function () {
         $("#timerHeader").hide();
         // Hiding the results div
 
-
+        // Number of right answers
         if ($('input[name="q1"]:checked').val() === questions[0].correctAns[2]) {
             correctAns++;
-        } else {
-            wrongAns++;
+        } 
+
+        if ($('input[name="q2"]:checked').val() === questions[1].correctAns[1]) {
+            correctAns++;
+        } 
+
+        if ($('input[name="q3"]:checked').val() === questions[2].correctAns[0]) {
+            correctAns++;
+        } 
+
+        if ($('input[name="q4"]:checked').val() === questions[3].correctAns[3]) {
+            correctAns++;
+        } 
+
+        if ($('input[name="q5"]:checked').val() === questions[4].correctAns[0]) {
+            correctAns++;
         }
+
+        if ($('input[name="q6"]:checked').val() === questions[5].correctAns[3]) {
+            correctAns++;
+        } 
+
+        if ($('input[name="q7"]:checked').val() === questions[6].correctAns[1]) {
+            correctAns++;
+        } 
+
+        if ($('input[name="q8"]:checked').val() === questions[7].correctAns[1]) {
+            correctAns++;
+        }
+
+        // Number of unanswered questions
+        if ($("input:radio[name='q1']").is(":checked")===false){
+            notAns++;
+        }
+
+        if ($("input:radio[name='q2']").is(":checked")===false){
+            notAns++;
+        }
+
+        if ($("input:radio[name='q3']").is(":checked")===false){
+            notAns++;
+        }
+
+        if ($("input:radio[name='q4']").is(":checked")===false){
+            notAns++;
+        }
+
+        if ($("input:radio[name='q5']").is(":checked")===false){
+            notAns++;
+        }
+
+        if ($("input:radio[name='q6']").is(":checked")===false){
+            notAns++;
+        }
+
+        if ($("input:radio[name='q7']").is(":checked")===false){
+            notAns++;
+        }
+
+        if ($("input:radio[name='q8']").is(":checked")===false){
+            notAns++;
+        }
+
+        // Number of wrong answers
+        wrongAns = questions.length - correctAns - notAns
 
         // Creating results div
         $("#results").html("<h2>All Done!</h2>" +
